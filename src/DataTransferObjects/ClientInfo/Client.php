@@ -4,7 +4,7 @@ namespace HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\ClientInfo;
 
 class Client
 {
-    public int $card;
+    public ?int $card;
     public int $client_id;
     public int $webstore_id;
     public int $client_status;
@@ -12,8 +12,8 @@ class Client
     public string $lastname;
     public string $firstname;
     public string $birthdate;
-    public int $nameday;
-    public int $zipcode;
+    public string $nameday;
+    public string $zipcode;
     public string $city;
     public string $address;
     public string $mobile;
