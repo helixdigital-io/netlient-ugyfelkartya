@@ -1,0 +1,41 @@
+{
+  "name": "helixdigital-io/netlient-ugyfelkartya",
+  "description": "A PHP package for the Ugyfelkartya API from Netlient.",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Mark Magyar",
+      "email": "mark.magyar@helixdigital.io"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "saloonphp/saloon": "^3.0"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.31",
+    "laravel/pint": "^1.13",
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "HelixdigitalIo\\NetlientUgyfelkartya\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    },
+    "sort-packages": true
+  },
+  "extra": {
+    "composer-normalize": {
+      "indent-size": 2,
+      "indent-style": "space"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": "composer normalize",
+    "pint": "@php pint"
+  }
+}
