@@ -6,11 +6,9 @@ use Saloon\Http\Connector;
 
 class Ugyfelkartya extends Connector
 {
-    public function __construct(
-        string $username,
-        string $password
-    ) {
-        $this->withBasicAuth($username, $password);
+    public function __construct()
+    {
+        $this->withBasicAuth($_ENV['API_USERNAME'], $_ENV['API_PASSWORD']);
     }
 
     public function resolveBaseUrl(): string
