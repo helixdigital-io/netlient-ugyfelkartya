@@ -2,8 +2,8 @@
 
 namespace HelixdigitalIo\NetlientUgyfelkartya\Requests\Client;
 
-use HelixdigitalIo\NetlientUgyfelkartya\Responses\Client\ClientDelete as ClientDeleteResponse;
 use HelixdigitalIo\NetlientUgyfelkartya\Connectors\Ugyfelkartya;
+use HelixdigitalIo\NetlientUgyfelkartya\Responses\Client\ClientDelete as ClientDeleteResponse;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Faking\MockClient;

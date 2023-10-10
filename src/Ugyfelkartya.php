@@ -16,24 +16,28 @@ class Ugyfelkartya
     public static function register(int $storeId, string $email, string $firstName, string $lastName, string $birthDate): RegistrationResponse
     {
         $request = new Registration($storeId, $email, $firstName, $lastName, $birthDate);
+
         return $request->send();
     }
 
     public static function getClientInfo(string $email): ClientInfoResponse
     {
         $request = new ClientInfo($email);
+
         return $request->send();
     }
 
     public static function getCard(string $cardNumber): GetCardResponse
     {
         $request = new GetCard($cardNumber);
+
         return $request->send();
     }
 
     public static function deleteClient(int $clientId, int $storeId): ClientDeleteResponse
     {
         $request = new ClientDelete($clientId, $storeId);
+
         return $request->send();
     }
 }

@@ -2,8 +2,8 @@
 
 namespace HelixdigitalIo\NetlientUgyfelkartya\Requests;
 
-use HelixdigitalIo\NetlientUgyfelkartya\Responses\CardTypes as CardTypesResponse;
 use HelixdigitalIo\NetlientUgyfelkartya\Connectors\Ugyfelkartya;
+use HelixdigitalIo\NetlientUgyfelkartya\Responses\CardTypes as CardTypesResponse;
 use Saloon\Enums\Method;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Request;
