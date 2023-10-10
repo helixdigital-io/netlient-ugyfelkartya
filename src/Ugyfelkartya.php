@@ -1,5 +1,7 @@
 <?php
 
+namespace HelixdigitalIo\NetlientUgyfelkartya;
+
 use HelixdigitalIo\NetlientUgyfelkartya\Requests\Card\GetCard;
 use HelixdigitalIo\NetlientUgyfelkartya\Requests\Client\ClientDelete;
 use HelixdigitalIo\NetlientUgyfelkartya\Requests\ClientInfo;
