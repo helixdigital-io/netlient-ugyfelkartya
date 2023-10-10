@@ -2,7 +2,7 @@
 
 namespace HelixdigitalIo\NetlientUgyfelkartya\Responses\Card;
 
-use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\ClientInfo as ClientInfoDto;
+use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\Card as CardDto;
 use HelixdigitalIo\NetlientUgyfelkartya\Traits\IsSuccessfulResponse;
 use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorCodeOnError;
 use JsonException;
@@ -15,7 +15,7 @@ class GetCard extends Response
     /**
      * @throws JsonException
      */
-    public function card(): ?ClientInfoDto
+    public function card(): ?CardDto
     {
         $response = $this->object();
 
@@ -25,6 +25,6 @@ class GetCard extends Response
             return null;
         }
 
-        return new ClientInfoDto($response);
+        return new CardDto($response);
     }
 }
