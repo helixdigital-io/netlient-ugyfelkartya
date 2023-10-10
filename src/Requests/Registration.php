@@ -4,6 +4,7 @@ namespace HelixdigitalIo\NetlientUgyfelkartya\Requests;
 
 use HelixdigitalIo\NetlientUgyfelkartya\Responses\Registration as RegistrationResponse;
 use HelixdigitalIo\NetlientUgyfelkartya\Ugyfelkartya;
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Request;
@@ -13,7 +14,7 @@ use Saloon\Traits\Request\HasConnector;
 /**
  * @method RegistrationResponse send(MockClient|null $mockClient = null)
  */
-class Registration extends Request
+class Registration extends Request implements HasBody
 {
     use HasConnector, HasJsonBody;
 
@@ -56,10 +57,12 @@ class Registration extends Request
     {
         return [
             'store_id' => $this->storeId,
-            'email' => $this->email,
+            'e_mail' => $this->email,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
-            'birth_date' => $this->birthDate,
+            'birthdate' => $this->birthDate,
+            'activate_card' => true,
+            'get_virtualcard' => true,
         ];
     }
 }

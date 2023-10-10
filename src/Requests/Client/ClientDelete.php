@@ -4,6 +4,7 @@ namespace HelixdigitalIo\NetlientUgyfelkartya\Requests\Client;
 
 use HelixdigitalIo\NetlientUgyfelkartya\Responses\Client\ClientDelete as ClientDeleteResponse;
 use HelixdigitalIo\NetlientUgyfelkartya\Ugyfelkartya;
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Request;
@@ -13,7 +14,7 @@ use Saloon\Traits\Request\HasConnector;
 /**
  * @method ClientDeleteResponse send(MockClient|null $mockClient = null)
  */
-class ClientDelete extends Request
+class ClientDelete extends Request implements HasBody
 {
     use HasConnector, HasJsonBody;
 
