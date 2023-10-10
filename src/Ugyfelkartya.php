@@ -1,26 +1,37 @@
 <?php
 
-namespace HelixdigitalIo\NetlientUgyfelkartya;
+use HelixdigitalIo\NetlientUgyfelkartya\Requests\Card\GetCard;
+use HelixdigitalIo\NetlientUgyfelkartya\Requests\Client\ClientDelete;
+use HelixdigitalIo\NetlientUgyfelkartya\Requests\ClientInfo;
+use HelixdigitalIo\NetlientUgyfelkartya\Requests\Registration;
+use HelixdigitalIo\NetlientUgyfelkartya\Responses\Card\GetCard as GetCardResponse;
+use HelixdigitalIo\NetlientUgyfelkartya\Responses\Client\ClientDelete as ClientDeleteResponse;
+use HelixdigitalIo\NetlientUgyfelkartya\Responses\ClientInfo as ClientInfoResponse;
+use HelixdigitalIo\NetlientUgyfelkartya\Responses\Registration as RegistrationResponse;
 
-use Saloon\Http\Connector;
-
-class Ugyfelkartya extends Connector
+class Ugyfelkartya
 {
-    public function __construct()
+    public static function register(int $storeId, string $email, string $firstName, string $lastName, string $birthDate): RegistrationResponse
     {
-        $this->withBasicAuth($_ENV['API_USERNAME'], $_ENV['API_PASSWORD']);
+        $request = new Registration($storeId, $email, $firstName, $lastName, $birthDate);
+        return $request->send();
     }
 
-    public function resolveBaseUrl(): string
+    public static function getClientInfo(string $email): ClientInfoResponse
     {
-        return 'https://www.ugyfelkartya.hu/api';
+        $request = new ClientInfo($email);
+        return $request->send();
     }
 
-    protected function defaultHeaders(): array
+    public static function getCard(string $cardNumber): GetCardResponse
     {
-        return [
-            'Content-Type' => 'application/json;charset=UTF-8',
-            'Accept' => 'application/json',
-        ];
+        $request = new GetCard($cardNumber);
+        return $request->send();
+    }
+
+    public static function deleteClient(int $clientId, int $storeId): ClientDeleteResponse
+    {
+        $request = new ClientDelete($clientId, $storeId);
+        return $request->send();
     }
 }

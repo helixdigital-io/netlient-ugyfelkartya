@@ -3,7 +3,7 @@
 namespace HelixdigitalIo\NetlientUgyfelkartya\Requests\Card;
 
 use HelixdigitalIo\NetlientUgyfelkartya\Responses\Card\GetCard as GetCardResponse;
-use HelixdigitalIo\NetlientUgyfelkartya\Ugyfelkartya;
+use HelixdigitalIo\NetlientUgyfelkartya\Connectors\Ugyfelkartya;
 use Saloon\Enums\Method;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Request;

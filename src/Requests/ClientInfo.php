@@ -3,7 +3,7 @@
 namespace HelixdigitalIo\NetlientUgyfelkartya\Requests;
 
 use HelixdigitalIo\NetlientUgyfelkartya\Responses\ClientInfo as ClientInfoResponse;
-use HelixdigitalIo\NetlientUgyfelkartya\Ugyfelkartya;
+use HelixdigitalIo\NetlientUgyfelkartya\Connectors\Ugyfelkartya;
 use Saloon\Enums\Method;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Request;

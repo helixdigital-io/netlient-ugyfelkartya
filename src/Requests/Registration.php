@@ -3,7 +3,7 @@
 namespace HelixdigitalIo\NetlientUgyfelkartya\Requests;
 
 use HelixdigitalIo\NetlientUgyfelkartya\Responses\Registration as RegistrationResponse;
-use HelixdigitalIo\NetlientUgyfelkartya\Ugyfelkartya;
+use HelixdigitalIo\NetlientUgyfelkartya\Connectors\Ugyfelkartya;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Faking\MockClient;
