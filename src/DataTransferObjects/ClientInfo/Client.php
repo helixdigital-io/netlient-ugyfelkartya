@@ -2,28 +2,50 @@
 
 namespace HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\ClientInfo;
 
+use Carbon\CarbonImmutable;
+
 class Client
 {
     public ?int $card;
+
     public int $client_id;
+
     public int $webstore_id;
+
     public int $client_status;
+
     public string $email;
+
     public string $lastname;
+
     public string $firstname;
-    public string $birthdate;
+
+    public ?CarbonImmutable $birthdate;
+
     public string $nameday;
+
     public string $zipcode;
+
     public string $city;
+
     public string $address;
+
     public string $mobile;
+
     public string $company;
+
     public int $store_id;
+
     public int $gender;
+
     public string $comment;
-    public string $registdate;
-    public string $activedate;
+
+    public CarbonImmutable $registdate;
+
+    public CarbonImmutable $activedate;
+
     public int $newsletter;
+
     public function __construct(
         object $client
     ) {
@@ -34,7 +56,7 @@ class Client
         $this->email = $client->email;
         $this->lastname = $client->lastname;
         $this->firstname = $client->firstname;
-        $this->birthdate = $client->birthdate;
+        $this->birthdate = !empty($client->birthdate) ? CarbonImmutable::parse($client->birthdate) : null;
         $this->nameday = $client->nameday;
         $this->zipcode = $client->zipcode;
         $this->city = $client->city;
@@ -44,9 +66,8 @@ class Client
         $this->store_id = $client->store_id;
         $this->gender = $client->gender;
         $this->comment = $client->comment;
-        $this->registdate = $client->registdate;
-        $this->activedate = $client->activedate;
+        $this->registdate = CarbonImmutable::parse($client->registdate);
+        $this->activedate = CarbonImmutable::parse($client->activedate);
         $this->newsletter = $client->newsletter;
     }
-
 }
