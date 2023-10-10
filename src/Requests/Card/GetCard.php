@@ -24,6 +24,11 @@ class GetCard extends Request
 
     protected $cardNumber;
 
+    public function __construct(int $cardNumber)
+    {
+        $this->cardNumber = $cardNumber;
+    }
+
     public function resolveEndpoint(): string
     {
         return "/card/$this->cardNumber";
