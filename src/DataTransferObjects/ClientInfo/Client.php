@@ -8,6 +8,12 @@ class Client
 {
     public ?int $card;
 
+    public int $card_type_id;
+
+    public string $card_type_name;
+
+    public bool $card_validity;
+
     public int $client_id;
 
     public int $webstore_id;
@@ -23,6 +29,8 @@ class Client
     public ?CarbonImmutable $birthdate;
 
     public string $nameday;
+
+    public string $country;
 
     public string $zipcode;
 
@@ -46,10 +54,15 @@ class Client
 
     public int $newsletter;
 
+    public ?int $evfordulo;
+
     public function __construct(
         object $client
     ) {
         $this->card = $client->card;
+        $this->card_type_id = $client->card_type_id;
+        $this->card_type_name = $client->card_type_name;
+        $this->card_validity = $client->card_validity;
         $this->client_id = $client->client_id;
         $this->webstore_id = $client->webstore_id;
         $this->client_status = $client->client_status;
@@ -58,6 +71,7 @@ class Client
         $this->firstname = $client->firstname;
         $this->birthdate = !empty($client->birthdate) ? CarbonImmutable::parse($client->birthdate) : null;
         $this->nameday = $client->nameday;
+        $this->country = $client->country;
         $this->zipcode = $client->zipcode;
         $this->city = $client->city;
         $this->address = $client->address;
@@ -69,5 +83,6 @@ class Client
         $this->registdate = CarbonImmutable::parse($client->registdate);
         $this->activedate = CarbonImmutable::parse($client->activedate);
         $this->newsletter = $client->newsletter;
+        $this->evfordulo = $client->evfordulo;
     }
 }
