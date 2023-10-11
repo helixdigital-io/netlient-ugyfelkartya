@@ -7,6 +7,7 @@ use HelixdigitalIo\NetlientUgyfelkartya\Enums\ErrorCode;
 trait SetErrorData
 {
     public ?string $errorCode = null;
+
     public ?string $errorMessage = null;
 
     public function setErrorData(object $response): void
