@@ -4,13 +4,13 @@ namespace HelixdigitalIo\NetlientUgyfelkartya\Responses\Client;
 
 use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\Client\ClientDelete as ClientDeleteDto;
 use HelixdigitalIo\NetlientUgyfelkartya\Traits\IsSuccessfulResponse;
-use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorCodeOnError;
+use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorData;
 use JsonException;
 use Saloon\Http\Response;
 
 class ClientDelete extends Response
 {
-    use IsSuccessfulResponse, SetErrorCodeOnError;
+    use IsSuccessfulResponse, SetErrorData;
 
     /**
      * @throws JsonException
@@ -20,7 +20,7 @@ class ClientDelete extends Response
         $response = $this->object();
 
         if (!$this->isSuccessfulResponse($response)) {
-            $this->setErrorCodeOnError($response);
+            $this->setErrorData($response);
 
             return null;
         }

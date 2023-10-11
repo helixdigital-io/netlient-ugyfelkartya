@@ -4,13 +4,13 @@ namespace HelixdigitalIo\NetlientUgyfelkartya\Responses;
 
 use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\ClientInfo as ClientInfoDto;
 use HelixdigitalIo\NetlientUgyfelkartya\Traits\IsSuccessfulResponse;
-use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorCodeOnError;
+use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorData;
 use JsonException;
 use Saloon\Http\Response;
 
 class ClientInfo extends Response
 {
-    use IsSuccessfulResponse, SetErrorCodeOnError;
+    use IsSuccessfulResponse, SetErrorData;
 
     /**
      * @throws JsonException
@@ -20,7 +20,7 @@ class ClientInfo extends Response
         $response = $this->object();
 
         if (!$this->isSuccessfulResponse($response)) {
-            $this->setErrorCodeOnError($response);
+            $this->setErrorData($response);
 
             return null;
         }

@@ -4,13 +4,13 @@ namespace HelixdigitalIo\NetlientUgyfelkartya\Responses\Card;
 
 use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\Card as CardDto;
 use HelixdigitalIo\NetlientUgyfelkartya\Traits\IsSuccessfulResponse;
-use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorCodeOnError;
+use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorData;
 use JsonException;
 use Saloon\Http\Response;
 
 class GetCard extends Response
 {
-    use IsSuccessfulResponse, SetErrorCodeOnError;
+    use IsSuccessfulResponse, SetErrorData;
 
     /**
      * @throws JsonException
@@ -20,7 +20,7 @@ class GetCard extends Response
         $response = $this->object();
 
         if (!$this->isSuccessfulResponse($response)) {
-            $this->setErrorCodeOnError($response);
+            $this->setErrorData($response);
 
             return null;
         }
