@@ -9,15 +9,14 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": "^7.4",
+    "guzzlehttp/guzzle": "^7.8",
     "nesbot/carbon": "^2.71",
-    "saloonphp/saloon": "^3.0",
-    "symfony/var-dumper": "^6.3",
+    "symfony/var-dumper": "v5.4.29",
     "vlucas/phpdotenv": "^5.5"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "^2.31",
-    "laravel/pint": "^1.13",
+    "ergebnis/composer-normalize": "2.28.3",
     "roave/security-advisories": "dev-latest"
   },
   "autoload": {
