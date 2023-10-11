@@ -3,12 +3,14 @@
 namespace HelixdigitalIo\NetlientUgyfelkartya;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\Card as CardDto;
 use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\Client\ClientDelete as ClientDeleteDto;
 use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\ClientInfo as ClientInfoDto;
 use HelixdigitalIo\NetlientUgyfelkartya\DataTransferObjects\Registration as RegistrationDto;
 use HelixdigitalIo\NetlientUgyfelkartya\Traits\IsSuccessfulResponse;
 use HelixdigitalIo\NetlientUgyfelkartya\Traits\SetErrorData;
+use JsonException;
 
 class Ugyfelkartya
 {
@@ -34,6 +36,11 @@ class Ugyfelkartya
         ]);
     }
 
+    /**
+     * @return $this|RegistrationDto
+     * @throws GuzzleException
+     * @throws JsonException
+     */
     public function register(
         int $storeId,
         string $email,
@@ -41,7 +48,7 @@ class Ugyfelkartya
         string $lastName,
         ?string $birthDate,
         ?string $zipCode
-    ): ?RegistrationDto
+    )
     {
         $body = [
             'store_id' => $storeId,
@@ -67,39 +74,54 @@ class Ugyfelkartya
         $response = $this->parseResponse($jsonResponse);
 
         if ($response === null) {
-            return null;
+            return $this;
         }
 
         return new RegistrationDto($response);
     }
 
-    public function getClientInfo(string $email): ?ClientInfoDto
+    /**
+     * @return $this|ClientInfoDto
+     * @throws GuzzleException
+     * @throws JsonException
+     */
+    public function getClientInfo(string $email)
     {
         $jsonResponse = (string)($this->client->get("clientinfo?email={$email}")->getBody());
 
         $response = $this->parseResponse($jsonResponse);
 
         if ($response === null) {
-            return null;
+            return $this;
         }
 
         return new ClientInfoDto($response);
     }
 
-    public function getCard(string $cardNumber): ?CardDto
+    /**
+     * @return $this|CardDto
+     * @throws GuzzleException
+     * @throws JsonException
+     */
+    public function getCard(string $cardNumber)
     {
         $jsonResponse = (string)($this->client->get("card/{$cardNumber}")->getBody());
 
         $response = $this->parseResponse($jsonResponse);
 
         if ($response === null) {
-            return null;
+            return $this;
         }
 
         return new CardDto($response);
     }
 
-    public function deleteClient(int $clientId, int $storeId): ?ClientDeleteDto
+    /**
+     * @return $this|ClientDeleteDto
+     * @throws GuzzleException
+     * @throws JsonException
+     */
+    public function deleteClient(int $clientId, int $storeId)
     {
         $jsonResponse = (string)($this->client->post('client/delete', [
             'json' => [
@@ -111,7 +133,7 @@ class Ugyfelkartya
         $response = $this->parseResponse($jsonResponse);
 
         if ($response === null) {
-            return null;
+            return $this;
         }
 
         return new ClientDeleteDto($response);
