@@ -13,31 +13,23 @@ use HelixdigitalIo\NetlientUgyfelkartya\Responses\Registration as RegistrationRe
 
 class Ugyfelkartya
 {
-    public static function register(int $storeId, string $email, string $firstName, string $lastName, string $birthDate): RegistrationResponse
+    public static function register(int $storeId, string $email, string $firstName, string $lastName, ?string $birthDate): RegistrationResponse
     {
-        $request = new Registration($storeId, $email, $firstName, $lastName, $birthDate);
-
-        return $request->send();
+        return (new Registration($storeId, $email, $firstName, $lastName, $birthDate))->send();
     }
 
     public static function getClientInfo(string $email): ClientInfoResponse
     {
-        $request = new ClientInfo($email);
-
-        return $request->send();
+        return (new ClientInfo($email))->send();
     }
 
     public static function getCard(string $cardNumber): GetCardResponse
     {
-        $request = new GetCard($cardNumber);
-
-        return $request->send();
+        return (new GetCard($cardNumber))->send();
     }
 
     public static function deleteClient(int $clientId, int $storeId): ClientDeleteResponse
     {
-        $request = new ClientDelete($clientId, $storeId);
-
-        return $request->send();
+        return (new ClientDelete($clientId, $storeId))->send();
     }
 }

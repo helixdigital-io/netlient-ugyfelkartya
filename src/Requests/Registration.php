@@ -32,14 +32,14 @@ class Registration extends Request implements HasBody
 
     protected string $lastName;
 
-    protected string $birthDate;
+    protected ?string $birthDate;
 
     public function __construct(
         int $storeId,
         string $email,
         string $firstName,
         string $lastName,
-        string $birthDate
+        ?string $birthDate
     ) {
         $this->storeId = $storeId;
         $this->email = $email;
@@ -55,14 +55,19 @@ class Registration extends Request implements HasBody
 
     public function defaultBody(): array
     {
-        return [
+        $body = [
             'store_id' => $this->storeId,
             'e_mail' => $this->email,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
-            'birthdate' => $this->birthDate,
             'activate_card' => true,
             'get_virtualcard' => true,
         ];
+
+        if ($this->birthDate !== null) {
+            $body['birthdate'] = $this->birthDate;
+        }
+
+        return $body;
     }
 }
