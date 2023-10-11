@@ -15,7 +15,7 @@ class Ugyfelkartya
     use IsSuccessfulResponse, SetErrorData;
 
     private Client $client;
-    private string $baseUrl = 'https://www.ugyfelkartya.hu/api';
+    private string $baseUrl = 'https://www.ugyfelkartya.hu/api/';
 
     /** @var array<string, string> */
     private array $headers = [
@@ -60,7 +60,7 @@ class Ugyfelkartya
             $body['zip_code'] = $zipCode;
         }
 
-        $jsonResponse = (string)($this->client->post('/registration', [
+        $jsonResponse = (string)($this->client->post('registration', [
             'json' => $body
         ])->getBody());
 
@@ -71,7 +71,7 @@ class Ugyfelkartya
 
     public function getClientInfo(string $email): ?ClientInfoDto
     {
-        $jsonResponse = (string)($this->client->get("/clientinfo?email={$email}")->getBody());
+        $jsonResponse = (string)($this->client->get("clientinfo?email={$email}")->getBody());
 
         $response = $this->parseResponse($jsonResponse);
 
@@ -80,7 +80,7 @@ class Ugyfelkartya
 
     public function getCard(string $cardNumber): ?CardDto
     {
-        $jsonResponse = (string)($this->client->get("/card/{$cardNumber}")->getBody());
+        $jsonResponse = (string)($this->client->get("card/{$cardNumber}")->getBody());
 
         $response = $this->parseResponse($jsonResponse);
 
@@ -89,7 +89,7 @@ class Ugyfelkartya
 
     public function deleteClient(int $clientId, int $storeId): ?ClientDeleteDto
     {
-        $jsonResponse = (string)($this->client->post('/client/delete', [
+        $jsonResponse = (string)($this->client->post('client/delete', [
             'json' => [
                 'client_id' => $clientId,
                 'store_id' => $storeId,
