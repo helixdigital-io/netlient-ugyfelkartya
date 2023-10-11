@@ -66,6 +66,10 @@ class Ugyfelkartya
 
         $response = $this->parseResponse($jsonResponse);
 
+        if ($response === null) {
+            return null;
+        }
+
         return new RegistrationDto($response);
     }
 
@@ -75,6 +79,10 @@ class Ugyfelkartya
 
         $response = $this->parseResponse($jsonResponse);
 
+        if ($response === null) {
+            return null;
+        }
+
         return new ClientInfoDto($response);
     }
 
@@ -83,6 +91,10 @@ class Ugyfelkartya
         $jsonResponse = (string)($this->client->get("card/{$cardNumber}")->getBody());
 
         $response = $this->parseResponse($jsonResponse);
+
+        if ($response === null) {
+            return null;
+        }
 
         return new CardDto($response);
     }
@@ -97,6 +109,10 @@ class Ugyfelkartya
         ])->getBody());
 
         $response = $this->parseResponse($jsonResponse);
+
+        if ($response === null) {
+            return null;
+        }
 
         return new ClientDeleteDto($response);
     }
