@@ -160,7 +160,8 @@ class Ugyfelkartya
         ?int    $newslettermarketing = null,
         ?int    $card_validity = null,
                 $card_type = null,
-        ?bool   $activate_card = null
+        ?bool   $activate_card = null,
+        ?string $birthdate = null
     )
     {
         $json = [
@@ -178,7 +179,8 @@ class Ugyfelkartya
                 'newslettermarketing',
                 'card_validity',
                 'card_type',
-                'activate_card'
+                'activate_card',
+                'birthdate'
             ),
         ];
 
